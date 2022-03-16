@@ -7,6 +7,8 @@ export default class AddItem extends Component {
     this.onChangeCategory = this.onChangeCategory.bind(this)
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeNotes = this.onChangeNotes.bind(this);
+    this.onChangeLongitude = this.onChangeLongitude.bind(this);
+    this.onChangeLatitude = this.onChangeLatitude.bind(this);
     this.saveItem = this.saveItem.bind(this);
     this.newItem = this.newItem.bind(this);
 
@@ -15,8 +17,10 @@ export default class AddItem extends Component {
       category: "",
       name: "",
       notes: "",
+      longitude: 0.0,
+      latitude: 0.0,
       published: false,
-      submitted: false
+      submitted: false,
     };
   }
 
@@ -38,11 +42,25 @@ export default class AddItem extends Component {
     });
   }
 
+  onChangeLongitude(e) {
+    this.setState({
+      longitude: e.target.value
+    });
+  }
+
+  onChangeLatitude(e) {
+    this.setState({
+      latitude: e.target.value
+    });
+  }
+
   saveItem() {
     var data = {
       category: this.state.category,
       name: this.state.name,
-      notes: this.state.notes
+      notes: this.state.notes,
+      longitude: this.state.longitude,
+      latitude: this.state.latitude
     };
 
     ItemDataService.create(data)
@@ -52,6 +70,8 @@ export default class AddItem extends Component {
           category: response.data.category,
           name: response.data.name,
           notes: response.data.notes,
+          longitude: response.data.longitude,
+          latitude: response.data.latitude,
           published: response.data.published,
 
           submitted: true
@@ -69,6 +89,8 @@ export default class AddItem extends Component {
       category: "",
       name: "",
       notes: "",
+      logitude: 0.0,
+      latitude: 0.0,
       published: false,
       submitted: false
     });
@@ -123,6 +145,32 @@ export default class AddItem extends Component {
                 value={this.state.notes}
                 onChange={this.onChangeNotes}
                 name="notes"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="longitude">Longitude</label>
+              <input
+                type="number"
+                className="form-control"
+                id="longitude"
+                required
+                value={this.state.longitude}
+                onChange={this.onChangeLongitude}
+                name="longitude"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="latitude">Latitude</label>
+              <input
+                type="number"
+                className="form-control"
+                id="latitude"
+                required
+                value={this.state.latitude}
+                onChange={this.onChangeLatitude}
+                name="latitude"
               />
             </div>
 
