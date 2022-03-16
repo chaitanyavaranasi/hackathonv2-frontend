@@ -164,6 +164,18 @@ export default class ItemsList extends Component {
               </div>
               <div>
                 <label>
+                  <strong>Longitude:</strong>
+                </label>{" "}
+                {currentItem.longitude}
+              </div>
+              <div>
+                <label>
+                  <strong>Latitude:</strong>
+                </label>{" "}
+                {currentItem.latitude}
+              </div>
+              <div>
+                <label>
                   <strong>Status:</strong>
                 </label>{" "}
                 {currentItem.published ? "Published" : "Pending"}
