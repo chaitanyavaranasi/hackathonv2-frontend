@@ -73,7 +73,6 @@ export default class AddItem extends Component {
           longitude: response.data.longitude,
           latitude: response.data.latitude,
           published: response.data.published,
-
           submitted: true
         });
         console.log(response.data);
@@ -89,7 +88,7 @@ export default class AddItem extends Component {
       category: "",
       name: "",
       notes: "",
-      logitude: 0.0,
+      longitude: 0.0,
       latitude: 0.0,
       published: false,
       submitted: false
