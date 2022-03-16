@@ -4,6 +4,7 @@ import ItemDataService from "../services/item.service";
 export default class Item extends Component {
   constructor(props) {
     super(props);
+    this.onChangeCategory = this.onChangeCategory.bind(this)
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeNotes = this.onChangeNotes.bind(this);
     this.getItem = this.getItem.bind(this);
@@ -14,6 +15,7 @@ export default class Item extends Component {
     this.state = {
       currentItem: {
         id: null,
+        category: "",
         name: "",
         notes: "",
         published: false
@@ -24,6 +26,19 @@ export default class Item extends Component {
 
   componentDidMount() {
     this.getItem(this.props.match.params.id);
+  }
+
+  onChangeCategory(e) {
+    const category = e.target.value;
+
+    this.setState(function(prevState) {
+      return {
+        currentItem: {
+          ...prevState.currentItem,
+          category: category
+        }
+      };
+    });
   }
 
   onChangeName(e) {
@@ -66,6 +81,7 @@ export default class Item extends Component {
   updatePublished(status) {
     var data = {
       id: this.state.currentItem.id,
+      category: this.state.currentItem.category,
       name: this.state.currentItem.name,
       notes: this.state.currentItem.notes,
       published: status
@@ -122,6 +138,16 @@ export default class Item extends Component {
           <div className="edit-form">
             <h4>Item</h4>
             <form>
+            <div className="form-group">
+                <label htmlFor="category">Category</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="category"
+                  value={currentItem.name}
+                  onChange={this.onChangeCategory}
+                />
+              </div>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input

@@ -4,6 +4,7 @@ import ItemDataService from "../services/item.service";
 export default class AddItem extends Component {
   constructor(props) {
     super(props);
+    this.onChangeCategory = this.onChangeCategory.bind(this)
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeNotes = this.onChangeNotes.bind(this);
     this.saveItem = this.saveItem.bind(this);
@@ -11,12 +12,18 @@ export default class AddItem extends Component {
 
     this.state = {
       id: null,
+      category: "",
       name: "",
       notes: "",
       published: false,
-
       submitted: false
     };
+  }
+
+  onChangeCategory(e) {
+    this.setState({
+      category: e.target.value
+    });
   }
 
   onChangeName(e) {
@@ -33,6 +40,7 @@ export default class AddItem extends Component {
 
   saveItem() {
     var data = {
+      category: this.state.category,
       name: this.state.name,
       notes: this.state.notes
     };
@@ -41,6 +49,7 @@ export default class AddItem extends Component {
       .then(response => {
         this.setState({
           id: response.data.id,
+          category: response.data.category,
           name: response.data.name,
           notes: response.data.notes,
           published: response.data.published,
@@ -57,10 +66,10 @@ export default class AddItem extends Component {
   newItem() {
     this.setState({
       id: null,
+      category: "",
       name: "",
       notes: "",
       published: false,
-
       submitted: false
     });
   }
@@ -77,6 +86,20 @@ export default class AddItem extends Component {
           </div>
         ) : (
           <div>
+
+            <div className="form-group">
+              <label htmlFor="category">Category</label>
+              <input
+                type="text"
+                className="form-control"
+                id="category"
+                required
+                value={this.state.category}
+                onChange={this.onChangeCategory}
+                name="category"
+              />
+            </div>
+
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input

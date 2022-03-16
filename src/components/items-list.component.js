@@ -146,6 +146,12 @@ export default class ItemsList extends Component {
               <h4>Item</h4>
               <div>
                 <label>
+                  <strong>Category:</strong>
+                </label>{" "}
+                {currentItem.category}
+              </div>
+              <div>
+                <label>
                   <strong>Name:</strong>
                 </label>{" "}
                 {currentItem.name}
