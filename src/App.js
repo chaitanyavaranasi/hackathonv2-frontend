@@ -13,7 +13,7 @@ class App extends Component {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/items"} className="navbar-brand">
-            bezKoder
+            Znaydit
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
