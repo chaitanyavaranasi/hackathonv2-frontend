@@ -5,14 +5,14 @@ export default class AddItem extends Component {
   constructor(props) {
     super(props);
     this.onChangeName = this.onChangeName.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeNotes = this.onChangeNotes.bind(this);
     this.saveItem = this.saveItem.bind(this);
     this.newItem = this.newItem.bind(this);
 
     this.state = {
       id: null,
       name: "",
-      description: "",
+      notes: "",
       published: false,
 
       submitted: false
@@ -25,16 +25,16 @@ export default class AddItem extends Component {
     });
   }
 
-  onChangeDescription(e) {
+  onChangeNotes(e) {
     this.setState({
-      description: e.target.value
+      notes: e.target.value
     });
   }
 
   saveItem() {
     var data = {
       name: this.state.name,
-      description: this.state.description
+      notes: this.state.notes
     };
 
     ItemDataService.create(data)
@@ -42,7 +42,7 @@ export default class AddItem extends Component {
         this.setState({
           id: response.data.id,
           name: response.data.name,
-          description: response.data.description,
+          notes: response.data.notes,
           published: response.data.published,
 
           submitted: true
@@ -58,7 +58,7 @@ export default class AddItem extends Component {
     this.setState({
       id: null,
       name: "",
-      description: "",
+      notes: "",
       published: false,
 
       submitted: false
@@ -91,15 +91,15 @@ export default class AddItem extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="notes">Notes</label>
               <input
                 type="text"
                 className="form-control"
-                id="description"
+                id="notes"
                 required
-                value={this.state.description}
-                onChange={this.onChangeDescription}
-                name="description"
+                value={this.state.notes}
+                onChange={this.onChangeNotes}
+                name="notes"
               />
             </div>
 

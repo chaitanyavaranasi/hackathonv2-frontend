@@ -5,7 +5,7 @@ export default class Item extends Component {
   constructor(props) {
     super(props);
     this.onChangeName = this.onChangeName.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeNotes = this.onChangeNotes.bind(this);
     this.getItem = this.getItem.bind(this);
     this.updatePublished = this.updatePublished.bind(this);
     this.updateItem = this.updateItem.bind(this);
@@ -15,7 +15,7 @@ export default class Item extends Component {
       currentItem: {
         id: null,
         name: "",
-        description: "",
+        notes: "",
         published: false
       },
       message: ""
@@ -39,13 +39,13 @@ export default class Item extends Component {
     });
   }
 
-  onChangeDescription(e) {
-    const description = e.target.value;
+  onChangeNotes(e) {
+    const notes = e.target.value;
 
     this.setState(prevState => ({
       currentItem: {
         ...prevState.currentItem,
-        description: description
+        notes: notes
       }
     }));
   }
@@ -67,7 +67,7 @@ export default class Item extends Component {
     var data = {
       id: this.state.currentItem.id,
       name: this.state.currentItem.name,
-      description: this.state.currentItem.description,
+      notes: this.state.currentItem.notes,
       published: status
     };
 
@@ -133,13 +133,13 @@ export default class Item extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="description">Description</label>
+                <label htmlFor="notes">Notes</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="description"
-                  value={currentItem.description}
-                  onChange={this.onChangeDescription}
+                  id="notes"
+                  value={currentItem.notes}
+                  onChange={this.onChangeNotes}
                 />
               </div>
 

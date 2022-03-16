@@ -152,9 +152,9 @@ export default class ItemsList extends Component {
               </div>
               <div>
                 <label>
-                  <strong>Description:</strong>
+                  <strong>Notes:</strong>
                 </label>{" "}
-                {currentItem.description}
+                {currentItem.notes}
               </div>
               <div>
                 <label>
