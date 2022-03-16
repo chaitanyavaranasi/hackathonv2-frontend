@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 export default class ItemsList extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
+    this.onChangeSearchName = this.onChangeSearchName.bind(this);
     this.retrieveItems = this.retrieveItems.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveItem = this.setActiveItem.bind(this);
     this.removeAllItems = this.removeAllItems.bind(this);
-    this.searchTitle = this.searchTitle.bind(this);
+    this.searchName = this.searchName.bind(this);
 
     this.state = {
       items: [],
       currentItem: null,
       currentIndex: -1,
-      searchTitle: ""
+      searchName: ""
     };
   }
 
@@ -24,11 +24,11 @@ export default class ItemsList extends Component {
     this.retrieveItems();
   }
 
-  onChangeSearchTitle(e) {
-    const searchTitle = e.target.value;
+  onChangeSearchName(e) {
+    const searchName = e.target.value;
 
     this.setState({
-      searchTitle: searchTitle
+      searchName: searchName
     });
   }
 
@@ -71,13 +71,13 @@ export default class ItemsList extends Component {
       });
   }
 
-  searchTitle() {
+  searchName() {
     this.setState({
       currentItem: null,
       currentIndex: -1
     });
 
-    ItemDataService.findByTitle(this.state.searchTitle)
+    ItemDataService.findByName(this.state.searchName)
       .then(response => {
         this.setState({
           items: response.data
@@ -90,7 +90,7 @@ export default class ItemsList extends Component {
   }
 
   render() {
-    const { searchTitle, items, currentItem, currentIndex } = this.state;
+    const { searchName, items, currentItem, currentIndex } = this.state;
 
     return (
       <div className="list row">
@@ -100,14 +100,14 @@ export default class ItemsList extends Component {
               type="text"
               className="form-control"
               placeholder="Search by title"
-              value={searchTitle}
-              onChange={this.onChangeSearchTitle}
+              value={searchName}
+              onChange={this.onChangeSearchName}
             />
             <div className="input-group-append">
               <button
                 className="btn btn-outline-secondary"
                 type="button"
-                onClick={this.searchTitle}
+                onClick={this.searchName}
               >
                 Search
               </button>
@@ -146,7 +146,7 @@ export default class ItemsList extends Component {
               <h4>Item</h4>
               <div>
                 <label>
-                  <strong>Title:</strong>
+                  <strong>Name:</strong>
                 </label>{" "}
                 {currentItem.title}
               </div>

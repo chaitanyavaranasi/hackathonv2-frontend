@@ -4,7 +4,7 @@ import ItemDataService from "../services/item.service";
 export default class AddItem extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.saveItem = this.saveItem.bind(this);
     this.newItem = this.newItem.bind(this);
@@ -19,7 +19,7 @@ export default class AddItem extends Component {
     };
   }
 
-  onChangeTitle(e) {
+  onChangeName(e) {
     this.setState({
       title: e.target.value
     });
@@ -78,14 +78,14 @@ export default class AddItem extends Component {
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="title">Name</label>
               <input
                 type="text"
                 className="form-control"
                 id="title"
                 required
                 value={this.state.title}
-                onChange={this.onChangeTitle}
+                onChange={this.onChangeName}
                 name="title"
               />
             </div>

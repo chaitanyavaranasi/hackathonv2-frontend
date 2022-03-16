@@ -25,7 +25,7 @@ class ItemDataService {
     return http.delete(`/items`);
   }
 
-  findByTitle(title) {
+  findByName(title) {
     return http.get(`/items?title=${title}`);
   }
 }

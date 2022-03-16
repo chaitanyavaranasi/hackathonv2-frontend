@@ -4,7 +4,7 @@ import ItemDataService from "../services/item.service";
 export default class Item extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.getItem = this.getItem.bind(this);
     this.updatePublished = this.updatePublished.bind(this);
@@ -26,7 +26,7 @@ export default class Item extends Component {
     this.getItem(this.props.match.params.id);
   }
 
-  onChangeTitle(e) {
+  onChangeName(e) {
     const title = e.target.value;
 
     this.setState(function(prevState) {
@@ -123,13 +123,13 @@ export default class Item extends Component {
             <h4>Item</h4>
             <form>
               <div className="form-group">
-                <label htmlFor="title">Title</label>
+                <label htmlFor="title">Name</label>
                 <input
                   type="text"
                   className="form-control"
                   id="title"
                   value={currentItem.title}
-                  onChange={this.onChangeTitle}
+                  onChange={this.onChangeName}
                 />
               </div>
               <div className="form-group">
