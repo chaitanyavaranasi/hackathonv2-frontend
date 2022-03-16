@@ -11,7 +11,7 @@ export default class AddItem extends Component {
 
     this.state = {
       id: null,
-      title: "",
+      name: "",
       description: "",
       published: false,
 
@@ -21,7 +21,7 @@ export default class AddItem extends Component {
 
   onChangeName(e) {
     this.setState({
-      title: e.target.value
+      name: e.target.value
     });
   }
 
@@ -33,7 +33,7 @@ export default class AddItem extends Component {
 
   saveItem() {
     var data = {
-      title: this.state.title,
+      name: this.state.name,
       description: this.state.description
     };
 
@@ -41,7 +41,7 @@ export default class AddItem extends Component {
       .then(response => {
         this.setState({
           id: response.data.id,
-          title: response.data.title,
+          name: response.data.name,
           description: response.data.description,
           published: response.data.published,
 
@@ -57,7 +57,7 @@ export default class AddItem extends Component {
   newItem() {
     this.setState({
       id: null,
-      title: "",
+      name: "",
       description: "",
       published: false,
 
@@ -78,15 +78,15 @@ export default class AddItem extends Component {
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="title">Name</label>
+              <label htmlFor="name">Name</label>
               <input
                 type="text"
                 className="form-control"
-                id="title"
+                id="name"
                 required
-                value={this.state.title}
+                value={this.state.name}
                 onChange={this.onChangeName}
-                name="title"
+                name="name"
               />
             </div>
 

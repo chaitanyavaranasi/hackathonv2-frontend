@@ -14,7 +14,7 @@ export default class Item extends Component {
     this.state = {
       currentItem: {
         id: null,
-        title: "",
+        name: "",
         description: "",
         published: false
       },
@@ -27,13 +27,13 @@ export default class Item extends Component {
   }
 
   onChangeName(e) {
-    const title = e.target.value;
+    const name = e.target.value;
 
     this.setState(function(prevState) {
       return {
         currentItem: {
           ...prevState.currentItem,
-          title: title
+          name: name
         }
       };
     });
@@ -66,7 +66,7 @@ export default class Item extends Component {
   updatePublished(status) {
     var data = {
       id: this.state.currentItem.id,
-      title: this.state.currentItem.title,
+      name: this.state.currentItem.name,
       description: this.state.currentItem.description,
       published: status
     };
@@ -123,12 +123,12 @@ export default class Item extends Component {
             <h4>Item</h4>
             <form>
               <div className="form-group">
-                <label htmlFor="title">Name</label>
+                <label htmlFor="name">Name</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="title"
-                  value={currentItem.title}
+                  id="name"
+                  value={currentItem.name}
                   onChange={this.onChangeName}
                 />
               </div>

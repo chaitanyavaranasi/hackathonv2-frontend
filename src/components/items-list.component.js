@@ -99,7 +99,7 @@ export default class ItemsList extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="Search by title"
+              placeholder="Search by name"
               value={searchName}
               onChange={this.onChangeSearchName}
             />
@@ -128,7 +128,7 @@ export default class ItemsList extends Component {
                   onClick={() => this.setActiveItem(item, index)}
                   key={index}
                 >
-                  {item.title}
+                  {item.name}
                 </li>
               ))}
           </ul>
@@ -148,7 +148,7 @@ export default class ItemsList extends Component {
                 <label>
                   <strong>Name:</strong>
                 </label>{" "}
-                {currentItem.title}
+                {currentItem.name}
               </div>
               <div>
                 <label>
